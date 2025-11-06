@@ -81,3 +81,7 @@ Troubleshooting
 - If you see "Cannot find module 'express'" when running `node server/server.js`, run `npm install` in the project root to install dependencies.
 - Make sure Node.js 16+ is installed on the deployment host.
 
+
+This is my deployed app :
+Access it from this link i have given beolw:
+https://690cc74a8306857ada8ebc74--unrivaled-souffle-4953ba.netlify.app/
