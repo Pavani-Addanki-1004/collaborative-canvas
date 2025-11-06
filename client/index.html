@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Collaborative Canvas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <header id="toolbar" class="toolbar-card">
+        <div class="toolbar-left">
+          <div class="tool-group">
+            <button id="brush" class="tool-btn" title="Brush">
+              <!-- brush icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22s4-1 6-4 6-7 8-9 4-5 4-5-2 1-4 3-5 6-8 8S2 22 2 22z"></path><path d="M14 6l4 4"></path></svg>
+            </button>
+            <button id="eraser" class="tool-btn" title="Eraser">
+              <!-- eraser icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.5V6a2 2 0 0 0-2-2h-5.5"></path><path d="M16 3l-9 9 4 4 9-9-4-4z"></path><path d="M3 21l6-6"></path></svg>
+            </button>
+          </div>
+
+          <div class="tool-group">
+            <input type="color" id="color" value="#000000" class="color-input" title="Color" />
+            <div class="swatches" id="swatches">
+              <button class="swatch" data-color="#000000" style="background:#000"></button>
+              <button class="swatch" data-color="#e6194b" style="background:#e6194b"></button>
+              <button class="swatch" data-color="#3cb44b" style="background:#3cb44b"></button>
+              <button class="swatch" data-color="#4363d8" style="background:#4363d8"></button>
+              <button class="swatch" data-color="#f58231" style="background:#f58231"></button>
+            </div>
+            <input type="range" id="width" min="1" max="40" value="3" class="width-input" title="Stroke width" />
+          </div>
+
+          <div class="tool-group small">
+            <button id="undo" class="icon-btn" title="Undo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"></path><path d="M21 12a9 9 0 1 0-9 9"></path></svg>
+            </button>
+            <button id="redo" class="icon-btn" title="Redo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"></path><path d="M3 12a9 9 0 1 1 9 9"></path></svg>
+            </button>
+            <button id="clear" class="icon-btn" title="Clear">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M8 6v14a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 6V4h6v2"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="toolbar-center">
+          <div class="title">Collaborative Canvas</div>
+          <div class="room-info">Room: <input id="roomId" placeholder="room id" class="room-input"/></div>
+        </div>
+
+        <div class="toolbar-right">
+          <input id="username" placeholder="your name" class="name-input" />
+          <button id="join" class="primary">Join</button>
+          <button id="saveBtn" class="icon-btn" title="Save">💾</button>
+          <button id="loadBtn" class="icon-btn" title="Load">📂</button>
+          <span id="status" class="status">Not connected</span>
+          <button id="helpBtn" class="icon-btn" title="Help">?</button>
+        </div>
+      </header>
+      <div id="main">
+        <div class="canvas-card">
+          <canvas id="canvas"></canvas>
+        </div>
+        <aside id="users" class="users-panel"></aside>
+      </div>
+    </div>
+
+    <div id="helpOverlay" class="help-overlay hidden">
+      <div class="help-card">
+        <h3>Quick Tips</h3>
+        <ul>
+          <li>Use brush/eraser to draw. Change color and width using the controls.</li>
+          <li>Undo: click Undo or press <kbd>z</kbd>. Redo: <kbd>y</kbd> or <kbd>Shift+z</kbd>.</li>
+          <li>Join a room to collaborate in real-time.</li>
+        </ul>
+        <button id="closeHelp" class="primary">Close</button>
+      </div>
+    </div>
+
+  <div id="metrics" class="metrics">FPS: <span id="fps">0</span> • Latency: <span id="latency">--</span>ms</div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="websocket.js"></script>
+    <script src="canvas.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
