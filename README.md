@@ -39,35 +39,8 @@ Time spent: ~2 hours (scaffold + core features)
 
 Deployment
 
-1) Heroku (recommended quick deploy)
+I did the deployment in netlify app
 
-- Create a Heroku app and push the repository. Heroku will run `npm install` and use the `Procfile` to start the server.
-
-Example (PowerShell):
-
-```powershell
-heroku login
-cd path\to\collaborative-canvas
-git init
-heroku git:remote -a <your-heroku-app-name>
-git add .
-git commit -m "deploy"
-git push heroku main
-```
-
-2) Render
-
-- Create a new Web Service on Render, connect your GitHub repo, set the build command `npm install` and start command `npm start`.
-
-3) Docker (any container host)
-
-Build and run locally with Docker:
-
-```powershell
-cd path\to\collaborative-canvas
-docker build -t collaborative-canvas .
-docker run -p 3000:3000 collaborative-canvas
-```
 
 Offline / air-gapped environments
 
@@ -83,5 +56,5 @@ Troubleshooting
 
 
 This is my deployed app :
-Access it from this link i have given beolw:
+Access it from this link i have given below:
 https://690cc74a8306857ada8ebc74--unrivaled-souffle-4953ba.netlify.app/
